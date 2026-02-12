@@ -1,0 +1,32 @@
+/* =======================================================================
+   BOTÕES
+   ======================================================================= */
+.link-add,
+.link-reset,
+.link-apagar,
+.link-edit,
+.link-listar {
+  min-width: 80px;
+  text-align: center;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.link-add { background: #22c55e; }
+.link-reset { background: #f97316; }
+.link-apagar { background: #dc2626; }
+.link-edit { background: #2d6ef8; }
+.link-listar { background: #ffb308; }
+
+.link-add:hover { background: #16a34a; }
+.link-reset:hover { background: #ea580c; }
+.link-apagar:hover { background: red; }
+.link-edit:hover { background: #1d4ed8; }
+.link-listar:hover { background: #ca8a04; }
