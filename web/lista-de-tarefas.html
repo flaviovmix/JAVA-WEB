@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JAVA WEB</title>
+
+    <!-- Fonte Inter (mais confiável que @import) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/layout.css">
+
+    <link rel="stylesheet" href="./assets/components/checkbox/style.css">
+    <link rel="stylesheet" href="./assets/components/buttons-links/style.css">
+    <link rel="stylesheet" href="./assets/components/table/style.css">
+    <link rel="stylesheet" href="./assets/components/paginacao/style.css">
+    <link rel="stylesheet" href="./assets/components/tabs/style.css">
+    <link rel="stylesheet" href="./assets/components/flash-message/style.css">
+    <link rel="stylesheet" href="./assets/components/modal/style.css">
+
+    <!-- 
+    <link rel="stylesheet" href="./assets/css/components/box-detalhe.css">
+-->
+
+</head>
+
+<body>
+
+    <div class="flash-message sucesso" id="flash-message">
+        <span>Acao confirmada</span>
+        <button type="button" onclick="fecharFlashMessage()">×</button>
+    </div>
+
+    <header class="detalhe-header">
+        <div class="header-inner">
+            <div class="btn-header">
+                <a class="link-reset" href="tarefas.html">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Voltar
+                </a>
+                <a href="#" class="link-add" onclick="novaTarefa(); return false;">
+                    <i class="fa-solid fa-plus"></i>
+                    Nova
+                </a>
+
+                <a href="#" class="link-edit" onclick="editarTarefa(); return false;">
+                    <i class="fa-solid fa-pen"></i>
+                    Editar
+                </a>
+
+                <a href="#" class="link-apagar" onclick="excluirTarefa(); return false;">
+                    <i class="fa-solid fa-trash"></i>
+                    Excluir
+                </a>
+
+                <a href="#" class="link-listar">
+                    <i class="fa-solid fa-list"></i>
+                    Lista de subtarefas
+                </a>
+            </div>
+
+            <h2>JAVA WEB</h2>
+        </div>
+    </header>
+
+
+
+    <main>
+
+        <div class="page-header">
+
+            <h1>LISTA DE TAREFAS</h1>
+
+            <div class="legenda-prioridade">
+                <span class="legenda-label">níveis de prioridade</span>
+
+                <div class="legenda-badges">
+                    <span class="badge baixa">baixa</span>
+                    <span class="badge media">média</span>
+                    <span class="badge alta">alta</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="task-tabs">
+
+            <!-- INDICADOR DESLIZANTE -->
+            <div class="tab-indicator"></div>
+
+            <!-- TAB 1 -->
+            <a href="#" class="task-tab active" data-tab="todos">
+                <i class="fa-solid fa-list"></i>
+                Todos
+            </a>
+
+            <!-- TAB 2 -->
+            <a href="#" class="task-tab" data-tab="ativas">
+                <i class="fa-solid fa-circle-check"></i>
+                Ativas
+            </a>
+
+            <!-- TAB 3 -->
+            <a href="#" class="task-tab" data-tab="inativas">
+                <i class="fa-solid fa-circle-pause"></i>
+                Inativas
+            </a>
+
+            <!-- TAB 4 -->
+            <a href="#" class="task-tab" data-tab="pendentes">
+                <i class="fa-solid fa-hourglass-half"></i>
+                Pendentes
+            </a>
+
+            <!-- TAB 5 -->
+            <a href="#" class="task-tab" data-tab="rascunho">
+                <i class="fa-solid fa-file-pen"></i>
+                Rascunho
+            </a>
+
+            <!-- TAB 6 -->
+            <a href="#" class="task-tab" data-tab="excluidas">
+                <i class="fa-solid fa-trash"></i>
+                Excluídas
+            </a>
+
+        </div>
+
+        <table class="task-table">
+
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Prioridade</th>
+                    <th>Responsável</th>
+                    <th>Status</th>
+                    <th class="text-center">Editar</th>
+                    <th class="text-center">Excluir</th>
+                    <th class="text-center">Ativo</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr class="row-link" data-href="#10">
+                    <td class="prioridade media"></td>
+                    <td>10</td>
+                    <td>Desativar tarefa</td>
+                    <td>baixa</td>
+                    <td>Satya Nadella</td>
+                    <td>inativo</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox" %s>
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="row-link" data-href="#9">
+                    <td class="prioridade baixa"></td>
+                    <td>9</td>
+                    <td>Editar tarefa</td>
+                    <td>baixa</td>
+                    <td>Sundar Pichai</td>
+                    <td>ativo</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox">
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+
+                </tr>
+
+                <tr class="row-link" data-href="#8">
+                    <td class="prioridade media"></td>
+                    <td>8</td>
+                    <td>Resolver o problema de CSS</td>
+                    <td>media</td>
+                    <td>Tim Cook</td>
+                    <td>rascunho</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox" %s>
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="row-link" data-href="#7">
+                    <td class="prioridade media"></td>
+                    <td>7</td>
+                    <td>Deletar uma tarefa</td>
+                    <td>media</td>
+                    <td>Sergey Brin</td>
+                    <td>pendente</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox" %s>
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="row-link" data-href="#6">
+                    <td class="prioridade alta"></td>
+                    <td>6</td>
+                    <td>Tratamento de erros</td>
+                    <td>alta</td>
+                    <td>Jeff Bezos</td>
+                    <td>pendente</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox" %s>
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="row-link" data-href="#5">
+                    <td class="prioridade media"></td>
+                    <td>5</td>
+                    <td>Entendendo Bean e DAO</td>
+                    <td>media</td>
+                    <td>Larry Page</td>
+                    <td>pendente</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox" %s>
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="row-link" data-href="#4">
+                    <td class="prioridade alta"></td>
+                    <td>4</td>
+                    <td>Criando um Pool de Conexões</td>
+                    <td>alta</td>
+                    <td>Elon Musk</td>
+                    <td>ativo</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox" %s>
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="row-link" data-href="#3">
+                    <td class="prioridade media"></td>
+                    <td>3</td>
+                    <td>Listar tarefas na interface</td>
+                    <td>media</td>
+                    <td>Mark Zuckerberg</td>
+                    <td>excluído</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox" %s>
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="row-link" data-href="#2">
+                    <td class="prioridade alta"></td>
+                    <td>2</td>
+                    <td>Criar banco de dados</td>
+                    <td>alta</td>
+                    <td>Bill Gates</td>
+                    <td>excluído</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox" %s>
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr class="row-link" data-href="#1">
+                    <td class="prioridade alta"></td>
+                    <td>1</td>
+                    <td>Criar a Interface</td>
+                    <td>alta</td>
+                    <td>Steve Jobs</td>
+                    <td>excluído</td>
+
+                    <td class="btn-action edit">
+                        <a href="#" onclick="editarTarefa(); return false;">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action delete">
+                        <a href="#" onclick="excluirTarefa(); return false;">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </td>
+
+                    <td class="btn-action">
+                        <label class="alternador">
+                            <input type="checkbox" %s>
+                            <span class="alternador-slider"></span>
+                        </label>
+                    </td>
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+
+        <div class="task-pagination2" id="paginacao">
+
+            <button type="button" class="task2-btn" id="btnPrimeira" aria-label="Primeira página">
+                &lt;&lt;
+            </button>
+
+            <button type="button" class="task2-btn" id="btnAnterior" aria-label="Página anterior">
+                &lt;
+            </button>
+
+            <div class="task2-center">
+                <select class="task2-select" id="selectPagina" aria-label="Selecionar página">
+                    <!-- exemplo estático (você pode substituir via JS/JSP) -->
+                    <option value="1">pagina 01 de 15</option>
+                    <option value="2">pagina 02 de 15</option>
+                    <option value="3">pagina 03 de 15</option>
+                </select>
+            </div>
+
+            <button type="button" class="task2-btn" id="btnProxima" aria-label="Próxima página">
+                &gt;
+            </button>
+
+            <button type="button" class="task2-btn" id="btnUltima" aria-label="Última página">
+                &gt;&gt;
+            </button>
+
+        </div>
+    </main>
+
+
+
+    <!--MODAL-->
+    <div class='overlay-custom' id='modalTarefas'>
+        <!-- <div class='overlay-custom' id='modalTarefas' style='display:none;'> -->
+        <div class='box-modal-custom' id='bgModal'>
+
+            <button type="button" class="btn-close-custom" onclick="closeModalTarefas()">×</button>
+            <h2 id="tituloModal">Nova Tarefa</h2>
+
+            <form action="" method="post" class="form-tarefa-custom">
+
+                <!-- ÚNICA COISA NOVA PRA EDITAR FUNCIONAR -->
+                <input type="hidden" id="id_tarefa" name="id_tarefa" value="">
+
+                <div class="group-custom">
+                    <label class="label-custom" for="titulo">Título</label>
+                    <input type="text" id="titulo" name="titulo">
+                </div>
+
+                <div class="columns-2-custom">
+
+                    <div class="group-custom">
+                        <label class="label-custom">Prioridade</label>
+
+                        <div class="radio-custom">
+
+                            <label class="label-custom">
+                                <input type="radio" name="prioridade" value="alta">
+                                Alta
+                            </label>
+
+                            <label class="label-custom">
+                                <input type="radio" name="prioridade" value="media">
+                                Média
+                            </label>
+
+                            <label class="label-custom">
+                                <input type="radio" name="prioridade" value="baixa">
+                                Baixa
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div class="group-custom">
+                        <label class="label-custom" for="responsavel">Responsável</label>
+                        <input type="text" id="responsavel" name="responsavel">
+                    </div>
+
+                </div>
+
+                <div class="columns-2-custom">
+
+                    <div class="group-custom">
+                        <label class="label-custom" for="data_criacao">Data de Criação</label>
+                        <input type="date" id="data_criacao" name="data_criacao" value="2025-01-01" required>
+                    </div>
+
+                    <div class="group-custom">
+                        <label class="label-custom" for="status">Status</label>
+                        <select id="status" name="status">
+                            <option value="">Selecione</option>
+                            <option value="0">ativo</option>
+                            <option value="1">inativo</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="group-custom">
+                    <label class="label-custom" for="descricao">Descrição</label>
+                    <textarea id="descricao" name="descricao" rows="4"></textarea>
+                </div>
+
+                <button type="submit" id="botaoConfirmacao" class="btn-save-custom">Salvar Tarefa</button>
+
+            </form>
+
+        </div>
+    </div>
+    <!--FIM DO MODAL-->
+
+    <script src="./assets/components/tabs/script.js"></script>
+    <script src="./assets/components/flash-message/script.js"></script>
+    <script src="./assets/components/modal/script.js"></script>
+    <script src="./assets/components/table/script.js"></script>
+</body>
+
+</html>

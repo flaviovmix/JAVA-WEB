@@ -1,10 +1,11 @@
 /* =======================================================================
    FLASH / MINI-MODAL
    ======================================================================= */
-.mini-modal {
+.flash-message {
   position: fixed;
   top: 20px;
   left: 50%;
+  font-weight: 500;
   transform: translateX(-50%);
   min-width: 280px;
   max-width: 420px;
@@ -19,24 +20,25 @@
   animation: slideDown 0.3s ease-out;
 }
 
-.mini-modal.info {
+.flash-message.info {
   background: #e8f2ff;
   color: #1d4ed8;
 }
 
-.mini-modal.danger,
-.mini-modal.flashErro {
+.flash-message.danger,
+.flash-message.flashErro {
   background: #fee2e2;
   color: #991b1b;
   border: 1px solid #fecaca;
 }
 
-.mini-modal.sucesso {
+.flash-message.sucesso {
   background: #ecfdf5;
   color: #047857;
+
 }
 
-.mini-modal button {
+.flash-message button {
   background: none;
   border: none;
   font-size: 18px;
@@ -44,7 +46,7 @@
   color: inherit;
 }
 
-.mini-modal.saindo {
+.flash-message.saindo {
   animation: slideUpOut 0.3s ease-in forwards;
 }
 
