@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="./assets/components/tabs/style.css">
     <link rel="stylesheet" href="./assets/components/flash-message/style.css">
     <link rel="stylesheet" href="./assets/components/modal/style.css">
-
+    <link rel="stylesheet" href="./assets/components/campo-busca/style.css">
+    
     <!-- 
     <link rel="stylesheet" href="./assets/css/components/box-detalhe.css">
 -->
@@ -61,6 +62,7 @@
                     <i class="fa-solid fa-list"></i>
                     Lista de subtarefas
                 </a>
+                
             </div>
 
             <h2>JAVA WEB</h2>
@@ -86,6 +88,7 @@
             </div>
 
         </div>
+
 
         <div class="task-tabs">
 
@@ -128,6 +131,12 @@
                 Excluídas
             </a>
 
+            <!-- CAMPO DE BUSCA -->
+            <div class="campo-busca">
+                <input type="text" placeholder="Buscar tarefas" class="input-busca">
+                <i class="fa-solid fa-magnifying-glass icon-busca"></i>
+            </div>
+
         </div>
 
         <table class="task-table">
@@ -135,14 +144,14 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>ID</th>
-                    <th>Titulo</th>
-                    <th>Prioridade</th>
-                    <th>Responsável</th>
-                    <th>Status</th>
+                    <th><a href="#">ID</a></th>
+                    <th><a href="#">Titulo</a></th>
+                    <th><a href="#">Prioridade</a></th>
+                    <th><a href="#">Responsável</a></th>
+                    <th><a href="#">Status</a></th>
                     <th class="text-center">Editar</th>
                     <th class="text-center">Excluir</th>
-                    <th class="text-center">Ativo</th>
+                    <th class="text-center"><a href="#">Ativo</a></th>
                 </tr>
             </thead>
 
@@ -170,8 +179,12 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox" %s>
+                            <input type="checkbox" id="chkRandom10">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom10").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
                 </tr>
@@ -198,10 +211,16 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox">
+                            <input type="checkbox" id="chkRandom9">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom9").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
+
+
 
                 </tr>
 
@@ -227,8 +246,12 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox" %s>
+                            <input type="checkbox" id="chkRandom8">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom8").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
                 </tr>
@@ -255,8 +278,12 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox" %s>
+                            <input type="checkbox" id="chkRandom7">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom7").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
                 </tr>
@@ -283,8 +310,12 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox" %s>
+                            <input type="checkbox" id="chkRandom6">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom6").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
                 </tr>
@@ -311,8 +342,12 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox" %s>
+                            <input type="checkbox" id="chkRandom5">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom5").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
                 </tr>
@@ -339,8 +374,12 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox" %s>
+                            <input type="checkbox" id="chkRandom4">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom4").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
                 </tr>
@@ -367,8 +406,12 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox" %s>
+                            <input type="checkbox" id="chkRandom3">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom3").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
                 </tr>
@@ -395,8 +438,12 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox" %s>
+                            <input type="checkbox" id="chkRandom2">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom2").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
                 </tr>
@@ -423,8 +470,12 @@
 
                     <td class="btn-action">
                         <label class="alternador">
-                            <input type="checkbox" %s>
+                            <input type="checkbox" id="chkRandom1">
                             <span class="alternador-slider"></span>
+                            <!-- só pra aolguns checked aparecerem marcados apagar o script e o id -->
+                            <script>
+                                document.getElementById("chkRandom1").checked = Math.random() * 11 > 5;
+                            </script>
                         </label>
                     </td>
                 </tr>
@@ -552,6 +603,7 @@
     <script src="./assets/components/flash-message/script.js"></script>
     <script src="./assets/components/modal/script.js"></script>
     <script src="./assets/components/table/script.js"></script>
+
 </body>
 
 </html>

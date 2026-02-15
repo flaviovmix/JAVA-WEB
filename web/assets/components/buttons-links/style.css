@@ -16,7 +16,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .link-add { background: #22c55e; }
@@ -30,3 +30,14 @@
 .link-apagar:hover { background: red; }
 .link-edit:hover { background: #1d4ed8; }
 .link-listar:hover { background: #ca8a04; }
+
+.task-table th a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: inherit;
+  display: inline-block;
+  transition: .15s;
+}
+.task-table th a:hover {
+  transform: scale(1.05);
+}

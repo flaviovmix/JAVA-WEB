@@ -1,0 +1,38 @@
+ /* =========================
+   CAMPO DE BUSCA
+   ========================= */
+
+ .campo-busca {
+     position: relative;
+     width: 100%;
+     padding-left: 15px;
+ }
+
+ .input-busca {
+     width: 100%;
+     box-sizing: border-box;
+     padding: 10px 10px 10px 10px;
+     /* 40px reserva espaço pro ícone */
+     border: 2px solid #ddd;
+     border-radius: 6px;
+     font-size: 14px;
+     outline: none;
+     transition: .15s;
+     background: #fff;
+ }
+
+ .input-busca:focus {
+     border-color: #1f2937;
+     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+ }
+
+ /* ÍCONE */
+ .icon-busca {
+     position: absolute;
+     right: 14px;
+     top: 50%;
+     transform: translateY(-50%);
+     font-size: 14px;
+     color: #6b7280;
+     pointer-events: none;
+ }
