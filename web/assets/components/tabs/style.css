@@ -67,7 +67,7 @@
   position: absolute;
   height: calc(100% - 16px);
   top: 8px;
-  left: 8px;
+  left: 0;
   background: #1f2937;
   border-radius: 8px;
   transition: transform .25s ease, width .25s ease;

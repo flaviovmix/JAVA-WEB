@@ -9,16 +9,21 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
         <link rel="stylesheet" href="./assets/css/base.css">
         <link rel="stylesheet" href="./assets/css/layout.css">
-        <link rel="stylesheet" href="./assets/css/components/buttons.css">
-        <link rel="stylesheet" href="./assets/css/components/table.css">
-        <link rel="stylesheet" href="./assets/css/components/tabs.css">
-        <link rel="stylesheet" href="./assets/css/components/paginacao.css">
-        <link rel="stylesheet" href="./assets/css/components/box-detalhe.css">
-        <link rel="stylesheet" href="./assets/css/components/mini-form.css">
-        <link rel="stylesheet" href="./assets/css/components/checkbox.css">
+        
+        <link rel="stylesheet" href="./assets/components/checkbox/style.css">
+        <link rel="stylesheet" href="./assets/components/buttons-links/style.css">
+        <link rel="stylesheet" href="./assets/components/table/style.css">
+        <link rel="stylesheet" href="./assets/components/paginacao/style.css">
+        <link rel="stylesheet" href="./assets/components/tabs/style.css">
+        <link rel="stylesheet" href="./assets/components/flash-message/style.css">
+        <link rel="stylesheet" href="./assets/components/modal/style.css">
+        <link rel="stylesheet" href="./assets/components/campo-busca/style.css">
 
+        <link rel="stylesheet" href="./assets/components/mini-form.css">
+        <link rel="stylesheet" href="./assets/components/box-detalhe.css">
     </head>
 
     <body class="page-detalhe">
@@ -26,30 +31,30 @@
         <header class="detalhe-header">
             <div class="header-inner">
                 <div class="btn-header">
-                    <a class="btn-reset" href="tarefas.html">
+                    <button class="link-voltar" href="tarefas.html">
                         <i class="fa-solid fa-arrow-left"></i>
                         Voltar
-                    </a>
+                    </button>
 
-                    <button class="btn-add" type="button" onclick="alert('editar (abrir modal)')">
+                    <button class="link-add" type="button" onclick="alert('editar (abrir modal)')">
                         <i class="fa-solid fa-plus"></i>
                         Nova
                     </button>
 
-                    <button class="btn-edit" type="button" onclick="alert('editar (abrir modal)')">
+                    <button class="link-edit" type="button" onclick="alert('editar (abrir modal)')">
                         <i class="fa-solid fa-pen"></i>
                         Editar
                     </button>
 
-                    <button class="btn-apagar" type="button" onclick="alert('excluir')">
+                    <button class="link-apagar" type="button" onclick="alert('excluir')">
                         <i class="fa-solid fa-trash"></i>
                         Excluir
                     </button>
 
-                    <a class="btn-listar" href="#sub-header">
+                    <button class="link-listar" href="#sub-header">
                         <i class="fa-solid fa-list"></i>
                         Lista de subtarefas
-                    </a>
+                    </button>
                 </div>
 
                 <h2>JAVA WEB</h2>
@@ -223,7 +228,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade baixa cell-link">
-                            <a href="detalhe.html?id=10" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=10" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">10</td>
                         <td class="cell-link">Desativar tarefa</td>
@@ -247,7 +252,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade media cell-link">
-                            <a href="detalhe.html?id=9" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=9" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">9</td>
                         <td class="cell-link">Editar tarefa</td>
@@ -271,7 +276,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade baixa cell-link">
-                            <a href="detalhe.html?id=8" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=8" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">8</td>
                         <td class="cell-link">Resolver o problema de CSS</td>
@@ -295,7 +300,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade media cell-link">
-                            <a href="detalhe.html?id=7" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=7" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">7</td>
                         <td class="cell-link">Deletar uma tarefa</td>
@@ -319,7 +324,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade alta cell-link">
-                            <a href="detalhe.html?id=6" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=6" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">6</td>
                         <td class="cell-link">Tratamento de erros</td>
@@ -343,7 +348,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade media cell-link">
-                            <a href="detalhe.html?id=5" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=5" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">5</td>
                         <td class="cell-link">Entendendo Bean e DAO</td>
@@ -367,7 +372,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade alta cell-link">
-                            <a href="detalhe.html?id=4" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=4" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">4</td>
                         <td class="cell-link">Criando um Pool de Conexões</td>
@@ -391,7 +396,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade alta cell-link">
-                            <a href="detalhe.html?id=3" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=3" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">3</td>
                         <td class="cell-link">Listar tarefas na interface</td>
@@ -415,7 +420,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade media cell-link">
-                            <a href="detalhe.html?id=2" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=2" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">2</td>
                         <td class="cell-link">Criar banco de dados</td>
@@ -439,7 +444,7 @@
 
                     <tr class="row-link">
                         <td class="prioridade alta cell-link">
-                            <a href="detalhe.html?id=1" class="row-anchor">Abrir</a>
+                            <a href="detalhe.html?id=1" class="row-anchor"></a>
                         </td>
                         <td class="cell-link">1</td>
                         <td class="cell-link">Criar a Interface</td>

@@ -1,12 +1,12 @@
 /* =======================================================================
     BOTÕES  E LINKS
    ======================================================================= */
+.link-voltar,
 .link-add,
 .link-reset,
 .link-apagar,
 .link-edit,
 .link-listar {
-  min-width: 80px;
   text-align: center;
   color: #fff;
   border: none;
@@ -19,17 +19,27 @@
   gap: 12px;
 }
 
+.link-voltar,
+.link-add,
+.link-reset,
+.link-apagar,
+.link-edit {
+  width: 100px;
+}
+
+.link-voltar { background: #efa505; }
 .link-add { background: #22c55e; }
 .link-reset { background: #f97316; }
 .link-apagar { background: #dc2626; }
 .link-edit { background: #2d6ef8; }
-.link-listar { background: #ffb308; }
+.link-listar { background: #153aa1; }
 
+.link-voltar:hover { background: #ca8a04; }
 .link-add:hover { background: #16a34a; }
 .link-reset:hover { background: #ea580c; }
 .link-apagar:hover { background: red; }
 .link-edit:hover { background: #1d4ed8; }
-.link-listar:hover { background: #ca8a04; }
+.link-listar:hover { background: #102c77; }
 
 .task-table th a {
   text-decoration: none;
