@@ -45,7 +45,7 @@
    ANIMAÇÃO ABRIR / FECHAR SUBTAREFAS
    ======================================================================= */
 
-#secaoSubtarefas {
+.sectionComp {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
@@ -59,7 +59,7 @@
   pointer-events: none;
 }
 
-#secaoSubtarefas.ativo {
+.sectionComp.ativo {
   max-height: 2000px;
   opacity: 1;
   transform: translateY(0);
