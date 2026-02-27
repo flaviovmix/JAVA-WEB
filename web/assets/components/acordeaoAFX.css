@@ -41,6 +41,13 @@
   color: #ef4444;
 }
 
+.labelAcordeaoAFX {
+  cursor:pointer; 
+  display:flex; 
+  gap:10px; 
+  align-items:center;
+}
+
 /* =======================================================================
    ANIMAÇÃO ABRIR / FECHAR SUBTAREFAS
    ======================================================================= */

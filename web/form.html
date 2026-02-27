@@ -55,14 +55,18 @@
     </header>
 
     <main>
-        <div class="acordeaoAFX">
-            <div class="sub-header listagem" id="tituloAcordeaoAFXNome">
-                <h2 class="titulo-secao"
-                    onclick="toggleAcordeaoAFX('acordeaoAFXNome','iconeAcordeaoAFXNome','textoAcordeaoAFXNome')"
-                    style="cursor:pointer; display:flex; gap:10px; align-items:center;">
 
-                    <i id="iconeAcordeaoAFXNome" class="fa-solid fa-chevron-right"></i>
-                    <span id="textoAcordeaoAFXNome">FECHAR ACORDEÃO AFX</span>
+        <div class="acordeaoAFX">
+            <div class="sub-header listagem">
+                <h2 class="labelAcordeaoAFX"
+                    data-alvo="#acordeaoAFXNome"
+                    data-icone="#iconeAcordeaoAFXNome"
+                    data-texto="#textoAcordeaoAFXNome"
+                    data-texto-abrir="ABRIR ACORDEÃO AFX TESTE"
+                    data-texto-fechar="FECHAR ACORDEÃO AFX TESTE"
+                    onclick="toggleAcordeaoAFX(this)">
+                <i id="iconeAcordeaoAFXNome" class="fa-solid fa-chevron-right"></i>
+                <span id="textoAcordeaoAFXNome">ABRIR ACORDEÃO AFX TESTE</span>
                 </h2>
             </div>
 
@@ -71,59 +75,105 @@
                     <div class="mini-form-header">
                         <h3>Titulo do Acordeão</h3>
                         <button type="button" class="btn-close"
-                            onclick="fecharAcordeaoAFX('acordeaoAFXNome', 'iconeAcordeaoAFXNome', 'tituloAcordeaoAFXNome', 'textoAcordeaoAFXNome')">
-                            <i class="fa-solid fa-xmark"></i>
+                        onclick="toggleAcordeaoAFX(this.closest('.acordeaoAFX').querySelector('.labelAcordeaoAFX'), true)">
+                        <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sint nihil necessitatibus.
-                        Tempore suscipit mollitia aliquid ducimus quam. Pariatur quia veniam, perferendis facilis
-                        officia dicta. Veniam nemo deleniti quod hic?</p>
+
+                    <p>Lorem ipsum...</p>
                 </div>
             </div>
         </div>
+        <div class="acordeaoAFX">
+            <div class="sub-header listagem">
+                <h2 class="labelAcordeaoAFX"
+                    data-alvo="#acordeaoAFXNome2"
+                    data-icone="#iconeAcordeaoAFXNome2"
+                    data-texto="#textoAcordeaoAFXNome2"
+                    data-texto-abrir="ABRIR ACORDEÃO AFX NOME 2"
+                    data-texto-fechar="FECHAR ACORDEÃO AFX NOME 2"
+                    onclick="toggleAcordeaoAFX(this)">
+                <i id="iconeAcordeaoAFXNome2" class="fa-solid fa-chevron-right"></i>
+                <span id="textoAcordeaoAFXNome2">ABRIR ACORDEÃO AFX NOME 2</span>
+                </h2>
+            </div>
+
+            <div class="acordeaoAFXComp" id="acordeaoAFXNome2">
+                <div class="mini-form">
+                    <div class="mini-form-header">
+                        <h3>Titulo do Acordeão</h3>
+                        <button type="button" class="btn-close"
+                        onclick="toggleAcordeaoAFX(this.closest('.acordeaoAFX').querySelector('.labelAcordeaoAFX'), true)">
+                        <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <p>Lorem ipsum...</p>
+                </div>
+            </div>
+        </div>
+        
+
+       
 
     </main>
 
     <script>
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Função que executa a alternância (Toggle)
+    const toggleAcordeao = (elTitulo) => {
+        const secao = document.querySelector(elTitulo.dataset.alvo);
+        const icone = document.querySelector(elTitulo.dataset.icone);
+        const texto = document.querySelector(elTitulo.dataset.texto);
 
-        function toggleAcordeaoAFX(idAcordeaoAFX, idIconeAFX, idTextoAFX) {
-            const secao = document.getElementById(idAcordeaoAFX);
-            const icone = document.getElementById(idIconeAFX);
-            const texto = document.getElementById(idTextoAFX);
+        if (!secao || !icone || !texto) return;
 
-            const vaiAbrir = !secao.classList.contains("ativo");
-            secao.classList.toggle("ativo");
+        const estaAtivo = secao.classList.toggle("ativo");
+        const abrirTxt = elTitulo.dataset.textoAbrir || "ABRIR";
+        const fecharTxt = elTitulo.dataset.textoFechar || "FECHAR";
 
-            icone.style.transform = vaiAbrir ? "rotate(90deg)" : "rotate(0deg)";
-            icone.style.transition = "transform .2s ease";
+        // Estilização e Texto
+        icone.style.transform = estaAtivo ? "rotate(90deg)" : "rotate(0deg)";
+        icone.style.transition = "transform .2s ease";
+        texto.innerText = estaAtivo ? fecharTxt : abrirTxt;
 
-            texto.innerText = vaiAbrir ? "FECHAR ACORDEÃO AFX" : "ABRIR ACORDEÃO AFX";
+        // Scroll suave
+        const elementoParaScroll = estaAtivo ? secao : elTitulo;
+        setTimeout(() => {
+            elementoParaScroll.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+    };
 
-            if (vaiAbrir) {
-                setTimeout(() => {
-                    secao.scrollIntoView({ behavior: "smooth", block: "start" });
-                }, 200);
-            }
+    // 2. Delegação de Eventos (Otimizado)
+    document.addEventListener("click", (event) => {
+        // Se clicou no título do acordeão
+        const label = event.target.closest(".labelAcordeaoAFX");
+        if (label) {
+            toggleAcordeao(label);
+            return;
         }
 
-
-        function fecharAcordeaoAFX(idAcordeaoAFX, idIconeAFX, idTituloAFX, idTextoAFX) {
-
-            const secao = document.getElementById(idAcordeaoAFX);
-            const icone = document.getElementById(idIconeAFX);
-            const titulo = document.getElementById(idTituloAFX);
-            const texto = document.getElementById(idTextoAFX);
-
-            secao.classList.remove("ativo");
-            icone.style.transform = "rotate(0deg)";
-            texto.innerText = "ABRIR ACORDEÃO AFX";
-
-            titulo.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        // Se clicou no botão de fechar (X) dentro do acordeão
+        const btnClose = event.target.closest(".btn-close");
+        if (btnClose) {
+            const acordeaoPai = btnClose.closest(".acordeaoAFX");
+            const labelCorrespondente = acordeaoPai.querySelector(".labelAcordeaoAFX");
+            toggleAcordeao(labelCorrespondente);
         }
+    });
 
+    // 3. Sincronização Inicial
+    document.querySelectorAll(".labelAcordeaoAFX").forEach((titulo) => {
+        const secao = document.querySelector(titulo.dataset.alvo);
+        if (secao && secao.classList.contains("ativo")) {
+            // Reutiliza a lógica para setar ícone e texto inicial se já vier 'ativo' do backend/HTML
+            const icone = document.querySelector(titulo.dataset.icone);
+            const texto = document.querySelector(titulo.dataset.texto);
+            if(icone) icone.style.transform = "rotate(90deg)";
+            if(texto) texto.innerText = titulo.dataset.textoFechar;
+        }
+    });
+});
     </script>
 </body>
 
