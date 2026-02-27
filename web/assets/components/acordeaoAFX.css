@@ -45,7 +45,7 @@
    ANIMAÇÃO ABRIR / FECHAR SUBTAREFAS
    ======================================================================= */
 
-.sectionComp {
+.acordeaoAFXComp {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
@@ -59,7 +59,7 @@
   pointer-events: none;
 }
 
-.sectionComp.ativo {
+.acordeaoAFXComp.ativo {
   max-height: 2000px;
   opacity: 1;
   transform: translateY(0);

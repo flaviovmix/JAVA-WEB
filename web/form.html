@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
 
-    <!-- Fonte Inter (mais confiável que @import) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -16,7 +15,7 @@
     <link rel="stylesheet" href="./assets/components/table/style.css">
     <link rel="stylesheet" href="./assets/components/box-detalhe.css">
     <link rel="stylesheet" href="./assets/components/buttons-links/style.css">
-    <link rel="stylesheet" href="./assets/components/mini-form.css">
+    <link rel="stylesheet" href="./assets/components/acordeaoAFX.css">
 
 
 </head>
@@ -56,124 +55,73 @@
     </header>
 
     <main>
-
-        <div class="page-header">
-
-            <div class="sub-header listagem" id="sub-header">
-                <h2 class="titulo-secao" onclick="toggleSubtarefas('sectionComp', 'iconeSectionComp')"
+        <div class="acordeaoAFX">
+            <div class="sub-header listagem" id="tituloAcordeaoAFXNome">
+                <h2 class="titulo-secao"
+                    onclick="toggleAcordeaoAFX('acordeaoAFXNome','iconeAcordeaoAFXNome','textoAcordeaoAFXNome')"
                     style="cursor:pointer; display:flex; gap:10px; align-items:center;">
-                    <i id="iconeSectionComp" class="fa-solid fa-chevron-right"></i>
-                    ABRIR SECTION
+
+                    <i id="iconeAcordeaoAFXNome" class="fa-solid fa-chevron-right"></i>
+                    <span id="textoAcordeaoAFXNome">FECHAR ACORDEÃO AFX</span>
                 </h2>
             </div>
 
-            <div class="legenda-prioridade">
-                <span class="legenda-label">níveis de prioridade</span>
-                <div class="legenda-badges">
-                    <span class="badge baixa">baixa</span>
-                    <span class="badge media">média</span>
-                    <span class="badge alta">alta</span>
+            <div class="acordeaoAFXComp ativo" id="acordeaoAFXNome">
+                <div class="mini-form">
+                    <div class="mini-form-header">
+                        <h3>Titulo do Acordeão</h3>
+                        <button type="button" class="btn-close"
+                            onclick="fecharAcordeaoAFX('acordeaoAFXNome', 'iconeAcordeaoAFXNome', 'tituloAcordeaoAFXNome', 'textoAcordeaoAFXNome')">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sint nihil necessitatibus.
+                        Tempore suscipit mollitia aliquid ducimus quam. Pariatur quia veniam, perferendis facilis
+                        officia dicta. Veniam nemo deleniti quod hic?</p>
                 </div>
             </div>
-        </div>
-
-        <div class="sectionComp" id="sectionComp">
-
-            <!-- FORM: adicionar subtarefa -->
-            <section class="mini-form">
-
-                <!-- HEADER -->
-                <div class="mini-form-header">
-                    <h3>Titulo da Section</h3>
-
-                    <button type="button" class="btn-close" onclick="fecharSubtarefas('sectionComp', 'iconeSectionComp')">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-
-                <!-- FORM -->
-
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </p>
-
-            </section>
-        </div>
-
-        
-            <div class="sub-header listagem" id="sub-header">
-                <h2 class="titulo-secao" onclick="toggleSubtarefas('sectionTeste', 'iconeSectionTeste')"
-                    style="cursor:pointer; display:flex; gap:10px; align-items:center;">
-                    <i id="iconeSectionTeste" class="fa-solid fa-chevron-right"></i>
-                    ABRIR SECTION
-                </h2>
-            </div>
-        <div class="sectionComp" id="sectionTeste">
-
-            <!-- FORM: adicionar subtarefa -->
-            <section class="mini-form">
-
-                <!-- HEADER -->
-                <div class="mini-form-header">
-                    <h3>Titulo da Section</h3>
-
-                    <button type="button" class="btn-close" onclick="fecharSubtarefas('sectionTeste', 'iconeSectionTeste')">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-
-                <!-- FORM -->
-
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                </p>
-
-            </section>
         </div>
 
     </main>
 
     <script>
 
-        function toggleSubtarefas(sectionComp, iconeSectionComp) {
-            const secao = document.getElementById(sectionComp);
-            const icone = document.getElementById(iconeSectionComp);
+        function toggleAcordeaoAFX(idAcordeaoAFX, idIconeAFX, idTextoAFX) {
+            const secao = document.getElementById(idAcordeaoAFX);
+            const icone = document.getElementById(idIconeAFX);
+            const texto = document.getElementById(idTextoAFX);
 
             const vaiAbrir = !secao.classList.contains("ativo");
-
             secao.classList.toggle("ativo");
 
             icone.style.transform = vaiAbrir ? "rotate(90deg)" : "rotate(0deg)";
             icone.style.transition = "transform .2s ease";
 
-            // 👇 SCROLL AUTOMÁTICO
+            texto.innerText = vaiAbrir ? "FECHAR ACORDEÃO AFX" : "ABRIR ACORDEÃO AFX";
+
             if (vaiAbrir) {
                 setTimeout(() => {
-                    secao.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-                }, 200); // tempo pequeno pra esperar abrir animação
+                    secao.scrollIntoView({ behavior: "smooth", block: "start" });
+                }, 200);
             }
         }
 
-        function fecharSubtarefas(sectionComp, iconeSectionComp) {
 
-            const secao = document.getElementById(sectionComp);
-            const icone = document.getElementById(iconeSectionComp);
+        function fecharAcordeaoAFX(idAcordeaoAFX, idIconeAFX, idTituloAFX, idTextoAFX) {
 
-            // remove abertura
+            const secao = document.getElementById(idAcordeaoAFX);
+            const icone = document.getElementById(idIconeAFX);
+            const titulo = document.getElementById(idTituloAFX);
+            const texto = document.getElementById(idTextoAFX);
+
             secao.classList.remove("ativo");
-
-            // volta seta
             icone.style.transform = "rotate(0deg)";
+            texto.innerText = "ABRIR ACORDEÃO AFX";
 
-            // 👇 SCROLL PRO TOPO
-            document.getElementById("sub-header")
-                .scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+            titulo.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
         }
 
     </script>
